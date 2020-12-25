@@ -1,0 +1,54 @@
+snippet SI
+options word
+    \\SI{${1:TARGET}}{${2}}${3}
+
+snippet si
+options word
+    \\si{${1:TARGET}}${2}
+
+snippet num
+    \\num{${1:TARGET}}${2}
+
+snippet *
+options word
+    \\cdot ${1}
+
+snippet X
+options word
+    \\times ${1}
+
+snippet //
+alias   frac fraction
+options word
+    \\frac{${1:TARGET}}{${2}}${3}
+
+snippet /
+options word
+    `' \over '`${1}
+
+snippet \
+options word
+    \\${1}{${2:TARGET}}${3}
+
+snippet text
+alias   t
+options word
+    \\text{${1:TARGET}}${2}
+
+snippet \\
+    \\${1}{${2:TARGET}}{${3}}${4}
+
+snippet bold
+alias   bo
+options word
+    \\symbf{${1:TARGET}}${2}
+
+snippet <<
+alias   langle
+options word
+    \\langle ${1:TARGET}
+
+snippet >>
+alias   rangle
+options word
+    \\rangle ${1:TARGET}

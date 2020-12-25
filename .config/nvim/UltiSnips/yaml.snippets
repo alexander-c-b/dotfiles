@@ -1,0 +1,29 @@
+snippet "^(\s*)- " "List item" rA
+`!p snip.rv = match[1]`-   
+endsnippet
+
+snippet ref "Reference" b
+-   id:    ${1}
+    type:  ${2:no-type}
+    title: ${3}
+    title-short: ${4:$3}
+    author:
+    -   given:  ${5}
+        family: ${6:$1}
+    issued:
+        year:  ${7}
+        month: ${8}
+        day:   ${9}
+    accessed:
+        year:  `date +%-Y`
+        month: `date +%-m`
+        day:   `date +%-d`
+    container-title: ${10}
+    URL: "${11}"
+endsnippet
+
+snippet auth "Additional author"
+-   given:  ${1}
+    family: ${2}
+${0}
+endsnippet

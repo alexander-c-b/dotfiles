@@ -1,0 +1,9 @@
+#!/bin/sh
+orig="$1"
+ext="$2"
+if [ -z "$orig" -o -z "$ext" ]; then
+	printf '%s\n' "Usage: $0 original.extension newextension" >&2
+	exit 1
+fi
+
+printf '%s\n' "$(printf %s "$orig" | sed 's:\(.*\)\.[^/]*$:\1:').$ext"

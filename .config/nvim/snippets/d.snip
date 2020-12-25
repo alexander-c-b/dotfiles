@@ -1,0 +1,12 @@
+snippet script
+    #!/usr/bin/env dub
+    /+ dub.sdl:
+        name "`bufname('%')`"
+        ${1}
+     +/
+    import std.stdio;
+
+    
+    void main() {
+        ${2}
+    }

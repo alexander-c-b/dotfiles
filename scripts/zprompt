@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cmd=${@:-echo}
+
+while true
+do
+	echo
+	echo -n "zprompt: "
+	read variable
+	$cmd $variable
+done

@@ -1,0 +1,5 @@
+#!/bin/sh
+gimp "$@" &
+sleep 3
+xdotool search --sync --classname gimp behave %@ mouse-enter exec killall xbindkeys &
+xdotool search --sync --classname gimp behave %@ mouse-leave exec xbindkeys &

@@ -1,0 +1,43 @@
+include shared_latex.snip
+
+snippet preamble
+    \documentclass{article}
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX}
+    \setmainfont{Ubuntu}
+    \usepackage[margin=0.5in]{geometry}
+    \usepackage{parskip}
+    \setlength{\parindent}{0pt}
+    \usepackage{enumitem}
+
+    \begin{document}
+    
+    ${1}
+
+    \end{document}
+
+snippet bullet
+    \begin{itemize}
+        \item ${1}
+    \end{itemize}
+
+
+snippet \documentclass
+alias   documentclass docclass class
+    \documentclass{${1:article}}${2}
+
+snippet \usepackage
+alias   usepackage usepkg pkg
+    \usepackage{${1}}${2}
+
+snippet begin
+alias   beg
+    \begin{${1}}
+      ${2}
+    \end{$1}
+
+snippet document
+alias   doc
+    \begin{document}
+    ${1}
+    \end{document}

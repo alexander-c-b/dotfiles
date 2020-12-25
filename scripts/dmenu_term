@@ -1,0 +1,5 @@
+#!/bin/sh
+program=$(dmenu_path | dmenu "$@")
+if [ ! -z $program ]; then
+	st -e $program
+fi

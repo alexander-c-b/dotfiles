@@ -1,0 +1,5 @@
+:set prompt "λ "
+:set prompt-cont "| "
+:set -XOverloadedStrings
+import qualified Data.Text    as T
+import qualified Data.Text.IO as TIO

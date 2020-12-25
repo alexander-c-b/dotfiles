@@ -1,0 +1,5 @@
+#!/bin/sh
+inkscape "$@" &
+sleep 3
+xdotool search --sync --classname inkscape behave %@ mouse-enter exec killall xbindkeys &
+xdotool search --sync --classname inkscape behave %@ mouse-leave exec xbindkeys &

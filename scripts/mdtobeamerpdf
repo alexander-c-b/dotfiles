@@ -1,0 +1,15 @@
+#!/bin/sh
+
+input="$1"
+shift
+output="$1"
+shift
+
+pandoc -t beamer \
+	--pdf-engine=lualatex \
+	--standalone \
+	--metadata-file=$HOME/Documents/normal.yaml \
+	--from markdown+lists_without_preceding_blankline \
+	--filter=$HOME/scripts/bold-to-underline.hs \
+	"$input" -o "$output" \
+	"$@" # the rest of the arguments

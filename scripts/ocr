@@ -1,0 +1,31 @@
+#!/bin/sh
+if [ -z "$1" -o -z "$2" ]
+then
+	echo "Usage: $0 [input [output [languages]]]"
+	echo "specify '-' for stdin/stdout"
+	exit 1
+fi
+
+input=${1:--}
+output=${2:--}
+language=${3:-eng}
+
+if [ "$output" = "-" ]
+then
+	function outputter { cat; }
+else
+	function outputter { >> "$output"; }
+fi
+
+if [ -a "$output" ]
+then
+	echo "Error: output file \`$output\` already exists"
+	exit 1
+fi
+
+# convert the pdf to a group of pngs	
+convert -density 200 "$input" -quality 90 /tmp/ocr.png
+for file in /tmp/ocr*.png
+do
+	tesseract -l "$language" "$file" - | outputter
+done

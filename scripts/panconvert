@@ -1,0 +1,6 @@
+#!/bin/sh
+in="$1"
+[ -z "$in" ] \
+	&& printf '%s\n' "Usage: $0 input [output]" && exit 1
+out="${2:-$(chext "$1" pdf)}"
+pandoc "$in" --metadata-file=$HOME/Documents/normal.yaml -t context -o "$out"

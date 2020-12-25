@@ -1,0 +1,8 @@
+#!/usr/bin/env dash
+pwd=$(pwd)
+files=""
+while [ "$pwd" != "/" ]; do
+	files="$(find "$pwd" -maxdepth 1 -name "$1")$(printf '\n%s' "$files")"
+	pwd=$(dirname "$pwd")
+done
+printf %s "$files" | sed '/^$/d'

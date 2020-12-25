@@ -1,0 +1,66 @@
+*.font:             xft:Ubuntu Mono:pixelsize=18,style=regular
+Xft.dpi:                        96
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.hintstyle:                  hintslight
+Xft.lcdfilter:                  lcdlight
+Xft.rgba:                       rgb
+
+URxvt.font:         xft: Ubuntu Mono:pixelsize=18,style=regular
+URxvt*termName:                 rxvt-256color
+URxvt.depth:                    32
+URxvt*lineSpace:                1
+URxvt.letterSpace:              -1
+URxvt.iso14755:                 false
+URxvt.iso14755_52:              false
+URxvt*geometry:                 65x17
+URxvt.scrollBar:                false
+URxvt*loginShell:               true
+URxvt.internalBorder:           5
+URxvt.perl-ext:         default,matcher
+*.url-launcher:                 qutebrowser
+URxvt.matcher.button: 1
+
+st.font:            Ubuntu Mono:pixelsize=18,style=regular
+st.internalBorder:      0
+st.borderpx:            0
+! special
+*.foreground:   #1f1f1f
+! *.background:   #0c1117
+! *.background:   #1d1f21
+*.background:   #ffffff
+*.cursorColor:  #000000
+
+! black
+*.color0:       #020c00
+*.color8:       #857f7b
+! original 5c5855
+
+! red
+*.color1:       #9c1f16
+*.color9:       #9c1f16
+
+! green
+*.color2:       #01321a
+*.color10:      #01321a
+
+! yellow
+*.color3:       #4c4701
+*.color11:      #4c4701
+
+! blue
+*.color4:       #01597f
+*.color12:      #01597f
+
+! magenta
+*.color5:       #4e3148
+*.color13:      #4e3148
+
+! cyan
+*.color6:       #50717c
+*.color14:      #50717c
+
+! white
+*.color7:       #a5a2a2
+*.color15:      #d0d0d0

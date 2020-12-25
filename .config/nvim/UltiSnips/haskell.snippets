@@ -1,0 +1,34 @@
+snippet importdata "Import a Data Module" b
+import qualified    ${1:Data.}${2} as $2
+import              `!p snip.rv = t[1] + t[2]` ($2)
+endsnippet
+
+snippet importT "import Data.Text" b
+import qualified    Data.Text       as T
+import              Data.Text       (Text)
+endsnippet
+
+snippet importMap "import Data.Map" b
+import qualified    Data.Map.Strict as Map
+import              Data.Map.Strict (Map)
+endsnippet
+
+snippet filter "Pandoc filter" b
+#!/usr/bin/env runhaskell
+{-# LANGUAGE OverloadedStrings #-}
+import              Text.Pandoc.Definition  ($1)
+import              Text.Pandoc.JSON        (toJSONFilter)
+
+main :: IO ()
+main = toJSONFilter $2
+
+$2 :: $3
+endsnippet
+
+snippet ext "Enable extension" b
+{-# LANGUAGE ${1:${VISUAL}} #-}${0}
+endsnippet
+
+snippet extover "OverloadedStrings extension" b
+{-# LANGUAGE OverloadedStrings #-}${0}
+endsnippet

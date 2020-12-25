@@ -1,0 +1,4 @@
+#!/bin/sh
+bluetoothctl power on; bluetoothctl connect 08:EF:3B:3E:8A:87
+printf 'Press Enter to exit...'
+read

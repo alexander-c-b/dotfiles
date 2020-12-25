@@ -1,0 +1,212 @@
+include shared_latex.snip
+
+snippet unit
+alias   u
+options word
+    $\\SI{${1:TARGET}}{${2}}$${3}
+
+snippet number
+alias   n
+options word
+    $\\num{${1:TARGET}}$${2}
+
+snippet unitonly
+alias   onlyunit
+options word
+    $\si{${1:TARGET}}$${2}
+
+snippet inline
+alias   `
+    \`${2:TARGET}\`{=${1:latex}}${3}
+
+snippet image
+alias   img
+    ![${1}](${2})${3}
+
+snippet notes-pictures
+alias   npic
+    ![](./notes-pictures/${1})${2}
+
+snippet comment
+alias   <
+    <!-- ${1:TARGET} -->${2}
+
+snippet longcomment
+alias   <!
+    <!--
+    ${1:TARGET}
+    -->
+    ${2}
+
+snippet 1h
+alias   h
+    # ${1}
+    ${2}
+
+snippet 2h
+    ## ${1}
+    ${2}
+
+snippet 3h
+    ### ${1}
+    ${2}
+
+snippet 4h
+    #### ${1}
+    ${2}
+
+snippet numbered
+    #.  ${1:TARGET}
+
+snippet title
+alias   yaml prelude
+    ---
+    title: ${1}
+    author: Alexander Bodoh
+    ---
+
+    ${2}
+
+snippet sources
+alias   source
+    ${1}
+
+    \`\newpage {\centering \`{=latex}
+
+    # Works Cited
+
+    \`}\`{=latex}
+
+    \`\begin{hangparas}{0.5in}{1}\`{=latex}
+
+    ::: {#refs}
+    :::
+
+    \`\end{hangparas}\`{=latex}
+
+snippet modelinetable
+alias   tablemodeline
+    <!-- vim: set textwidth=0 nowrap: -->
+
+snippet modeline
+    <!-- vim: set ${1:TARGET}: -->${2}
+
+# Units
+snippet dist
+options word
+    \\SI{${1:TARGET}}{m}${2}
+
+snippet vel
+options word
+    \\SI{${1:TARGET}}{m \\over s}${2}
+
+snippet acc
+options word
+    \\SI{${1:TARGET}}{m \\over s^2}${2}
+
+snippet mass
+options word
+    \\SI{${1:TARGET}}{kg}${2}
+
+snippet ener
+alias   ene eng
+options word
+    \\SI{${1:TARGET}}{J}${2}
+
+snippet force
+alias   for
+options word
+    \\SI{${1:TARGET}}{N}${2}
+
+snippet time
+alias   tim
+options word
+    \\SI{${1:TARGET}}{s}${2}
+
+snippet temp
+options word
+    \\SI{${1:TARGET}}{\\celsius}${2}
+
+snippet C
+alias   cel
+options word
+    \\celsius
+
+snippet K
+alias   kel
+options word
+    \\kelvin
+
+
+snippet $
+regexp  "[^\\$]"
+options word
+    $${1:TARGET}$${2}
+
+snippet $$
+regexp  "[^\\]"
+options word
+    $$ ${1:TARGET} $$${2}
+
+
+
+# COLORS
+
+snippet color
+alias   c cl col
+options word
+    [${2:TARGET}]{color=${1}}${3}
+
+
+snippet b
+options word
+    [${1:TARGET}]{color=blue}${2}
+
+snippet r
+options word
+    [${1:TARGET}]{color=red}${2}
+
+snippet g
+options word
+    [${1:TARGET}]{color=green}${2}
+
+snippet y
+options word
+    [${1:TARGET}]{color=yellow}${2}
+
+snippet cyan
+options word
+    [${1:TARGET}]{color=cyan}${2}
+
+snippet m
+options word
+    [${1:TARGET}]{color=magenta}${2}
+
+snippet highlight
+alias   h hl high
+options word
+    [${2:TARGET}]{highlight=${1}}${3}
+
+snippet ~
+options word
+    _{${1:TARGET}}${2}
+
+snippet ~~
+options word
+    ~${1:TARGET}~${2}
+
+snippet ^
+options word
+    ^{${1:TARGET}}${2}
+
+snippet ^^
+options word
+    ^${1:TARGET}^${2}
+
+snippet example
+alias   ex
+options word
+    _Ex: ${1}._${2}
+
+snippet \D
+    `"\\Delta "`

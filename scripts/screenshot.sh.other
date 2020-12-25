@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Arguments:
+# 1: font
+# 2: nb color
+# 3: nf color
+# 4: sb color
+# 5: sf color
+
+dmenu_cmd="dmenu -fn $1 -nb $2 -nf $3 -sb $4 -sf $5 "
+picture_file=/tmp/$(date +%Y%m%d-%H%M%S).png
+
+maim -i $(xdotool getactivewindow) $picture_file
+
+cd $HOME/shtick/school/
+locations="screenshots"
+for loc in */*pictures*
+do
+	locations="$locations\n$loc"
+	# :
+done
+
+location=$(printf $locations | $dmenu_cmd -p 'Save where?')
+case $location in
+	"screenshots")
+		new_location="$HOME/Pictures/screenshots/$(echo $(basename $picture_file) | $dmenu_cmd -p 'Name the file.')"
+		echo $new_location
+		mv $picture_file $new_location
+		;;
+	*)
+		new_location="$location/$(echo $(basename $picture_file) | $dmenu_cmd -p 'Name the file.')"
+		echo $new_location
+		mv $picture_file $new_location
+		;;
+esac

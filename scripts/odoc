@@ -1,0 +1,4 @@
+#!/bin/sh
+out=$(mktemp --tmpdir doc-conversion-XXXX.pdf)
+pandoc "$1" --metadata-file=$HOME/Documents/normal.yaml -t context -o "$out"
+(zathura "$out"; rm "$out") &

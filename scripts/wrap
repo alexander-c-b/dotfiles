@@ -1,0 +1,7 @@
+#!/bin/sh
+program="$1"
+shift
+newn "$program" "$@"
+sleep 3
+xdotool search --sync --classname "$program" behave %@ mouse-enter exec killall xbindkeys &
+xdotool search --sync --classname "$program" behave %@ mouse-leave exec xbindkeys &

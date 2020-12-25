@@ -1,0 +1,135 @@
+global !p
+if vim.eval("&filetype") == "pmarkdown":
+    texMathZones       = ['markdown_equation_1', 'markdown_equation_2']
+    texIgnoreMathZones = ['markdown_no_equation']
+
+elif vim.eval("&filetype") == "tex":
+    texMathZones = ['texMathZone'+x 
+                    for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 
+                              'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 
+                              'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 
+                              'X', 'Y', 'Z']]
+
+    texIgnoreMathZones = ['texMathText']
+
+
+texMathZoneIds = vim.eval('map(' + str(texMathZones) + ", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map(' 
+                                + str(texIgnoreMathZones) 
+                                + ", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+    synstackids = vim.eval(
+        "synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+    try:
+        first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+        return first != ignore
+    except StopIteration:
+        return False
+endglobal
+    
+    
+context "not math()"
+snippet mk "Inline Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ', ':', ';', '(', ')', '[', ']']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Display Math" wA
+$$ $1 .$$$0
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet '([A-DF-Za-df-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_(`!p snip.rv = match.group(2)`)
+endsnippet
+
+# context "math()"
+# snippet '([A-Z])([A-Z])' "auto subscript" wrA
+# `!p snip.rv = match.group(1) + "_" + match.group(2)`
+# endsnippet
+
+context "math()"
+snippet '(?<=\d)e' "Scientific notation" irA
+xx10^$0
+endsnippet
+
+context "math()"
+snippet == "( ,=, ... )," A
+( ,=,  $1  ),$0
+endsnippet
+
+context "math()"
+snippet =+ "(... ,=, ... )," A
+( $1 ,=,  $2  ),$0
+endsnippet
+
+snippet d; "$$ {: ... :}" A
+$$ {:
+$1
+:} $$$0
+endsnippet
+
+context "math()"
+snippet : "{:...:}" i
+{:${1:${VISUAL}}:}$0
+endsnippet
+
+context "math()"
+snippet "{: "  "{: ... :}" Ari
+{: $0 
+endsnippet
+
+context "math()"
+snippet t "text(...)"
+text(${1:${VISUAL}})$0
+endsnippet
+
+context "math()"
+snippet dist "sqrt((x)^2 + (y)^2)" i
+sqrt($1^2 + $2^2)$0
+endsnippet
+
+context "math()"
+snippet polarc "sqrt((x)^2 + (y)^2) /_ arctan {:y/x:}" i
+sqrt((${1})^2 + (${2})^2) /_ arctan {:$2/$1:}$0
+endsnippet
+
+context "math()" 
+snippet polar "... /_ ...°" i
+${1} /_ ${2}°${0}
+endsnippet
+
+context "math()" 
+snippet rectcj "rectangular form" i
+${1} cos ${2} + $1 sin $2 j${0}
+endsnippet
+
+context "math()" 
+snippet rectc "rectangular form" i
+${1} cos ${2} hat i + $1 sin $2 hat j${0}
+endsnippet
+
+context "math()" 
+snippet rect "rectangular form" i
+${1} hat i + ${2} hat j${0}
+endsnippet
+
+context "math()"
+snippet ch "Chemical" i
+\`|${1:${VISUAL}}\`$0
+endsnippet

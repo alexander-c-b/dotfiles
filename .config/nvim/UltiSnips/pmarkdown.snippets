@@ -1,0 +1,159 @@
+snippet cited "Works cited" b
+\`\\pagebreak\`{=context}
+
+# Works Cited
+::: {#refs .hang-indent}
+:::
+endsnippet
+
+snippet mlacited "Works cited" b
+\`\`\`{=context}
+\\pagebreak
+\\startalign[center] Works Cited \\stopalign
+\\setupindenting[-0.5in,yes,first]
+\`\`\`
+
+::: {#refs}
+:::
+endsnippet
+
+snippet :((\d+)h|h(\d+)): "Header (## ...)" r
+`!p
+m = match[2] or match[3]
+snip.rv = '#' * int(m)` $0
+endsnippet
+
+snippet :(\d+)(st|nd|rd|th): "Ordinal number superscript" r
+`!p snip.rv = f"{match[1]}^{match[2]}^"`
+endsnippet
+
+snippet < "HTML-style single-line comment" w
+<!-- ${1:${VISUAL}} -->$0
+endsnippet
+
+snippet <! "HMTL-style multi-line comment" w
+<!--
+${1:${VISUAL}}
+-->$0
+endsnippet
+
+snippet cols "Columns" b
+\`\\startcolumns[n=${1:2}]\`{=context}
+
+${2:${VISUAL}}
+
+\`\\stopcolumns\`{=context}$0
+endsnippet
+
+snippet col "Column" b
+\`\\column\`{=context}
+endsnippet
+
+# snippet !((\d+)\:|\:(\d+))! "Div: ::: ..." r
+# `!p
+# m = match.group(2) or match.group(3)
+# snip.rv = ':' * int(m)` $1
+# ${0}
+# endsnippet
+
+snippet npic "![](./notes-pictures/...)"
+![](./notes-pictures/${1})${0}
+endsnippet
+
+snippet img "Image: ![](...)"
+![](${1:${VISUAL}}){width=95%}$0
+endsnippet
+
+snippet fig "Image: ![...](...)"
+![${1:${VISUAL}}]($2){width=95%}$0
+endsnippet
+
+snippet modeline "Commented Vim Modeline" b
+<!-- vim: set $1: -->
+endsnippet
+
+snippet modelinefr "French Language modeline" b
+<!-- vim: set spelllang=fr: -->
+endsnippet
+
+snippet it "Italics" w
+\textit{${1:${VISUAL}}}$0
+endsnippet
+
+snippet hl "Highlight" w
+[${2:${VISUAL}}]{highlight=$1}$0
+endsnippet
+
+snippet cl "Color" w
+[${1:${VISUAL}}]{color=$1}$0
+endsnippet
+
+snippet form "Formula definition" w
+$$
+${1:${VISUAL}}
+. $$
+
+where
+- $0
+endsnippet
+
+snippet con "ConTeXt inline code"
+\`\\${1:${VISUAL}}`{=context}
+endsnippet
+
+snippet conn "ConTeXt inline code"
+~~~~{=context}
+${1:${VISUAL}}
+~~~~
+endsnippet
+
+snippet page "Pagebreak"
+\`\\pagebreak\`{=context}
+endsnippet
+
+snippet lat "LaTeX inline code"
+\`\\${1:${VISUAL}}`{=latex}
+endsnippet
+
+snippet title "Title of document"
+---
+title: ${1:${VISUAL}}
+assignment: yes
+---
+$0
+endsnippet
+
+snippet db "Definition list starting with bullet list"
+:   
+    -   ${1:${VISUAL}}
+endsnippet
+
+snippet "^(?P<initial>\s*)(?P<element>[*+:-]|(#|\d+|[a-z]|[A-Z])\.)\ " "Spaces after certain elements" Ar
+`!p
+snip.rv = ( match.group("initial")
+          + match.group("element") 
+          + " " * ((4 - len(match.group("element"))) or 4)
+          )
+`
+endsnippet
+
+snippet ^ "Footnote" i
+[^${1:${VISUAL}}]${0}
+
+[^$1]: ${2}
+endsnippet
+
+snippet cls "[...]{. ...}"
+[${2:${VISUAL}}]{.$1}$0
+endsnippet
+
+snippet ex "Example"
+[$1]{.example}$0
+endsnippet
+
+snippet code "Code block"
+~~~~${1}
+${2:${VISUAL}}
+~~~~
+${0}
+endsnippet

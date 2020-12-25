@@ -1,0 +1,13 @@
+snippet bang "#!/bin/sh"
+#!/bin/sh
+
+endsnippet
+
+snippet hasarg "Check that an argument is defined" b
+if [[ -z "$${1:${VISUAL}}" ]]
+then
+    echo "Usage: \$0 ${2}"
+    exit 1
+fi
+${0}
+endsnippet

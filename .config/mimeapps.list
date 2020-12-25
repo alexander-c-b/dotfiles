@@ -1,0 +1,20 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+; jepg=vimiv.desktop
+; jpg=vimiv.desktop
+image/jepg=vimiv.desktop
+image/JEPG=vimiv.desktop
+image/jpg=vimiv.desktop
+image/JPG=vimiv.desktop
+application/octet-stream=org.pwmt.zathura.desktop
+image=vimiv.desktop
+image/png=vimiv.desktop
+x-scheme-handler/msteams=teams.desktop
+
+[Added Associations]
+application/octet-stream=vimiv.desktop;

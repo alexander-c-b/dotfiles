@@ -1,0 +1,6 @@
+#!/bin/sh
+from-clipboard text/html \
+	| pandoc -f html-native_divs-native_spans \
+		-t markdown+lists_without_preceding_blankline-header_attributes \
+		--wrap none \
+	| to-clipboard

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+input="$1"
+shift
+output="$1"
+shift
+
+metadatas=$(findupwards style.yaml | sed 's/^/--metadata-file=/')
+filters=$(findupwards '.pandoc-*.hs' | sed 's/^/--filter=/')
+
+args=$(printf '%s\n%s' "$metadatas" "$filters" | sed '/^$/d')
+
+printf %s "$args" | xargs -d'\n' pandoc -t context \
+	--standalone \
+	--from markdown+lists_without_preceding_blankline \
+	--filter=$HOME/scripts/bold-to-underline.hs \
+	--filter=$HOME/scripts/asciimath.hs \
+	--filter=pandoc-citeproc \
+	"$input" -o "$output" \
+	"$@" # the rest of the arguments

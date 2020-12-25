@@ -1,0 +1,4 @@
+set incremental-search true
+set selection-clipboard "clipboard"
+set recolor-darkcolor "#bab6b6"
+set recolor-lightcolor "#1c1c1c"
