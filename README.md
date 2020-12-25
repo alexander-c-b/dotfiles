@@ -6,9 +6,6 @@ This directory includes many miscellanious tools and scripts.  The most importan
 
 I also use `to-clipboard` and `from-clipboard` quite often, which are thin wrappers over [`xclip`](https://github.com/astrand/xclip).
 
-## `Pictures/`
-This contains my wallpaper, "Green Mood Corner" by [Leonid Afremov](https://afremov.com/).
-
 ## `.local/share/`
 `pandoc/templates/default.context` is my fork of the default [ConTeXt](https://wiki.contextgarden.net/Main_Page) template from [Pandoc](https://pandoc.org/index.html), the basis of my process for writing professional documents in Markdown.
 
