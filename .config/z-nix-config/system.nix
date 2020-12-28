@@ -7,7 +7,6 @@
 
 let
   homePath = "/home/zander";
-  printernixpkgs = import /home/zander/tempdev/nixpkgs { config = { allowUnfree = true; }; };
   thisSystem = ./. + "/${builtins.readFile /etc/nixos/this-system}.nix";
 in rec {
   imports =
@@ -30,7 +29,12 @@ in rec {
   # CUPS printing
   services.printing = {
     enable  = true;
-    drivers = with printernixpkgs; [ mfcj835dwlpr mfcj835dw-cupswrapper ];
+    drivers = let
+      lpr         = pkgs.callPackage ./packages/mfcj835dw/lpr.nix { };
+      cupswrapper = pkgs.callPackage ./packages/mfcj835dw/cupswrapper.nix {
+        mfcj835dwlpr = lpr;
+      };
+    in [ lpr cupswrapper ];
   };
   services.system-config-printer.enable = true;
 
