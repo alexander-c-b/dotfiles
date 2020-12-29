@@ -1,3 +1,6 @@
 [submodule ".config/zsh/zsh-nix-shell"]
 	path = .config/zsh/zsh-nix-shell
 	url = https://github.com/chisui/zsh-nix-shell.git
+[submodule ".config/zsh/zsh-vim-mode"]
+	path = .config/zsh/zsh-vim-mode
+	url = https://github.com/softmoth/zsh-vim-mode.git
