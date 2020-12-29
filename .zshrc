@@ -53,6 +53,7 @@ then
 fi
 
 source $HOME/.config/zsh/zsh-nix-shell/nix-shell.plugin.zsh
+source /home/zander/.config/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 
 autoload -z edit-command-line
 zle -N edit-command-line
