@@ -165,6 +165,15 @@ augroup au_no_expand_tab
     autocmd BufNewFile,BufRead Makefile,*.asm setlocal noexpandtab shiftwidth=0
 augroup end
 " " }}}
+
+" two-space indent {{{2
+augroup au_two_space_indent
+    autocmd!
+    autocmd Filetype html,css,nix,coq,haskell setlocal
+        \ softtabstop=2
+        \ shiftwidth=2
+augroup end
+" }}}
 " " Text files {{{2
 augroup au_text
     autocmd!
@@ -173,15 +182,6 @@ augroup au_text
         \ nospell
         \ noexpandtab
         \ textwidth=0
-augroup end
-" " }}}
-
-" " HTML/CSS {{{2
-augroup au_html_css
-    autocmd!
-    autocmd Filetype html,css
-        \ setlocal softtabstop=2
-        \ shiftwidth=2
 augroup end
 " " }}}
 
@@ -264,23 +264,6 @@ augroup au_latex
         \ breakindent
         \ breakindentopt=shift:2
 augroup end
-" }}}
-
-" Nix {{{
-augroup au_nix
-    autocmd!
-    autocmd Filetype nix
-        \ setlocal
-        \ softtabstop=2
-        \ shiftwidth=2
-        \ autoindent
-augroup end
-" }}}
-
-" Coq {{{
-augroup au_coq
-    autocmd!
-    autocmd Filetype coq setlocal softtabstop=2 shiftwidth=2
 " }}}
 
 " }}}
