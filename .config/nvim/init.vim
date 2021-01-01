@@ -101,11 +101,11 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay       = 200
 let g:mucomplete#cycle_with_trigger     = 1
 let g:mucomplete#no_mappings            = 1
-imap <C-B>   <plug>(MUcompleteFwd)
+imap <C-B> <plug>(MUcompleteFwd)
 imap <C-V> <plug>(MUcompleteBwd)
 " Always insert new line on <Enter>
 inoremap <expr> <CR> pumvisible() ? "<C-Y><CR>" : "<CR>"
-let s:mu_text_chain = ['keyp', 'keyn', 'c-p', 'c-n', 'path', 'ulti', 'spel', 'dict']
+let s:mu_text_chain = ['keyp', 'keyn', 'c-p', 'c-n', 'path', 'ulti', 'uspl', 'dict']
 let g:mucomplete#chains = {
     \ 'default':   ['keyp', 'keyn', 'c-p', 'c-n', 'tags', 'omni', 'defs', 'path'],
     \ 'coq':       ['keyp', 'keyn', 'c-p', 'c-n', 'omni', 'path'],
@@ -179,7 +179,6 @@ augroup au_text
     autocmd!
     autocmd Filetype text
         \ setlocal linebreak
-        \ nospell
         \ noexpandtab
         \ textwidth=0
 augroup end
@@ -193,7 +192,6 @@ augroup au_markdown
     autocmd Filetype pmarkdown,yaml
         \ setlocal
         \ linebreak
-        \ nospell
         \ shiftwidth=4
         \ softtabstop=4
         \ breakindent
