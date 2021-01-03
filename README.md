@@ -1,5 +1,5 @@
 # Configuration files
-This is a repository of the many configuration files I use on my [NixOS](https://nixos.org/) Linux computers.  (The term "dotfiles" is used since hidden files on Unix, and thus many of my configuration files, begin with a period.)
+This is a repository of the many configuration files I use on my [NixOS](https://nixos.org/) Linux computers.
 
 ## `scripts/`
 This directory includes many miscellanious tools and scripts.  The most important are `mdtopdf` and `asciimath.hs`, the latter of which will soon be replaced by [alexander-c-b/AsciiMath](https://github.com/alexander-c-b/AsciiMath).
