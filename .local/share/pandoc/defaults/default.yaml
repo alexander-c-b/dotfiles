@@ -1,0 +1,8 @@
+from: markdown+lists_without_preceding_blankline
+to: context
+filters:
+-   /home/zander/scripts/bold-to-underline.hs
+-   /home/zander/scripts/asciimath.hs
+-   pandoc-citeproc
+cite-method: citeproc
+pdf-engine: context

@@ -5,16 +5,14 @@ shift
 output="$1"
 shift
 
-metadatas=$(findupwards style.yaml | sed 's/^/--metadata-file=/')
-filters=$(findupwards '.pandoc-*.hs' | sed 's/^/--filter=/')
+if [ -n "$MDTOPDF_DEFAULTS" ]; then
+	defaults="--defaults=$MDTOPDF_DEFAULTS"
+fi
 
-args=$(printf '%s\n%s' "$metadatas" "$filters" | sed '/^$/d')
+if [ -n "$MDTOPDF_DATADIR" ]; then
+	data_dir="--data-dir=$MDTOPDF_DATADIR"
+fi
 
-printf %s "$args" | xargs -d'\n' pandoc -t context \
-	--standalone \
-	--from markdown+lists_without_preceding_blankline \
-	--filter=$HOME/scripts/bold-to-underline.hs \
-	--filter=$HOME/scripts/asciimath.hs \
-	--filter=pandoc-citeproc \
-	"$input" -o "$output" \
-	"$@" # the rest of the arguments
+pandoc --standalone "$input" -o "$output" \
+	${defaults+"$defaults"} ${data_dir+"$data_dir"} $MDTOPDF_ARGS \
+	"$@"
